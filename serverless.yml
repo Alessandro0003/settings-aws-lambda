@@ -1,0 +1,18 @@
+service: nodeless
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+functions:
+  hello:
+    handler: src/handler.hello
+    events:
+      - httpApi:
+          path: /hello
+          method: get
+          
+plugins:
+  - serverless-offline
+  - serverless-plugin-typescript
